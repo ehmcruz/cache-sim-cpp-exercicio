@@ -14,20 +14,22 @@ int main (int argc, char **argv)
 
 	// primeiro parâmetro é o bit inicial
 	// segundo parâmetro é a quantidade de bits a partir do bit inicial
-	bits[1, 2] = 0;
+	// terceiro parâmetro é o valor a ser atribuído aos bits selecionados
+	bits.set(1, 2, 0);
 	std::cout << bits << std::endl;
 
-	uint32_t most_sig = bits[31];
+	// primeiro parâmetro é o bit inicial
+	// segundo parâmetro é a quantidade de bits a partir do bit inicial
+	uint32_t most_sig = bits.get(31, 1);
 	std::cout << "Most significant bit: " << most_sig << std::endl;
 
-	// quando for só 1 bit, pode omitir o segundo parâmetro
-	bits[31] = 1;
+	bits.set(31, 1, 1);
 	std::cout << bits << std::endl;
 
-	most_sig = bits[31];
+	most_sig = bits.get(31, 1);
 	std::cout << "Most significant bit: " << most_sig << std::endl;
 
-	bits[31] = bits[1];
+	bits.set(31, 1, bits.get(1, 1));
 	std::cout << bits << std::endl;
 
 	return 0;
